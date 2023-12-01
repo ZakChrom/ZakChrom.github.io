@@ -6,28 +6,43 @@ on:
       - master
   pull_request:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  deploy:
-    runs-on: ubuntu-22.04
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+  setup:
+    runs-on: ubuntu-latest
     steps:
-      - name: Setup | Rust
+      - name: Get rust
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
           profile: minimal
           target: ${{ matrix.target }}
-      - name: Build
-        run: |
-          cargo install --locked trunk
-          trunk build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Get trunk
+        run: cargo install --locked trunk
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build the site
+        run: trunk build
+
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: ./dist
+  
+  deploy:
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
