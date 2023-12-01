@@ -30,7 +30,7 @@ jobs:
           profile: minimal
           target: ${{ matrix.target }}
 
-      - name: Wasm thing:
+      - name: Wasm thing
         run: rustup target add wasm32-unknown-unknown
 
       - name: Get trunk
