@@ -15,12 +15,12 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: Setup | Rust
-          uses: actions-rs/toolchain@v1
-          with:
-            toolchain: stable
-            override: true
-            profile: minimal
-            target: ${{ matrix.target }}
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          profile: minimal
+          target: ${{ matrix.target }}
       - name: Build
         run: |
           cargo install --locked trunk
