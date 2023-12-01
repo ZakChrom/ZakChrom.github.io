@@ -28,6 +28,30 @@ fn Uiua(code: &'static str) -> impl IntoView {
 }
 
 #[component]
+fn Text(children: Children, class: Option<&'static str>) -> impl IntoView {
+    view! {
+        <a class={class.unwrap_or("")}>
+            {children()
+                .nodes
+                .into_iter()
+                .map(|child| {
+                    let mut err: bool = false;
+                    let mut text: String = "".to_string();
+                    if let Some(t) = child.as_text() {
+                        text = t.content.replace(":flag_ee:", FLAG_EE);
+                    } else { err = true; }
+
+                    if err {
+                        child
+                    } else {
+                        text.into_view()
+                    }
+                }).collect::<Vec<_>>()}
+        </a>
+    }
+}
+
+#[component]
 fn Main() -> impl IntoView {
     view! {
         <a class="text-4xl">"Hello, world!"</a><br/>
@@ -39,12 +63,16 @@ c ← <:⍜⍘√/+ Xy
     }
 }
 
+const FLAG_EE: &str = "🇪🇪";
+
 #[component]
 fn About() -> impl IntoView {
     view! {
-        <a class="text-xl">"Youtube: " <Link link="https://youtube.com/@CalionYT"/></a><br/>
-        <a class="text-xl">"Github: " <Link link="https://github.com/ZakChrom"/></a><br/>
-        <a class="text-xl">"Discord: " <a style="color: var(--main-color);">"@calionreal"</a></a>
+        <Text class=Some("text-xl")>Hello! I am Calion. Im from Estonia :flag_ee:</Text><br/>
+        <Text class=Some("text-xl")>My favourite programming languages are c, zig and rust.</Text><br/>
+        <Text class=Some("text-xl")>"Youtube: " <Link link="https://youtube.com/@CalionYT"/></Text><br/>
+        <Text class=Some("text-xl")>"Github: " <Link link="https://github.com/ZakChrom"/></Text><br/>
+        <Text class=Some("text-xl")>"Discord: " <a style="color: var(--main-color);">"@calionreal"</a></Text>
     }
 }
 
