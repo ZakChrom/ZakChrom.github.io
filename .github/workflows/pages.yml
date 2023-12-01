@@ -25,16 +25,21 @@ jobs:
       - name: Get rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: nightly
           override: true
           profile: minimal
           target: ${{ matrix.target }}
 
+      - name: Wasm thing:
+        run: rustup target add wasm32-unknown-unknown
+
       - name: Get trunk
-        run: cargo install --locked trunk
+        run: |
+          wget https://github.com/thedodd/trunk/releases/download/v0.17.5/trunk-x86_64-unknown-linux-gnu.tar.gz
+          tar -xf trunk-x86_64-unknown-linux-gnu.tar.gz
 
       - name: Build the site
-        run: trunk build
+        run: ./trunk build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
