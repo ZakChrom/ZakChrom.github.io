@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  setup:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,20 +33,14 @@ jobs:
       - name: Get trunk
         run: cargo install --locked trunk
 
-  build:
-    runs-on: ubuntu-latest
-    steps:
       - name: Build the site
         run: trunk build
 
-      - name: upload artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./dist
-  
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
