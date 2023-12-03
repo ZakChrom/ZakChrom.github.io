@@ -39,11 +39,7 @@ jobs:
           tar -xf trunk-x86_64-unknown-linux-gnu.tar.gz
 
       - name: Build the site
-        run: |
-          ./trunk build
-          mkdir dist/.well-known
-          touch dist/.well-known/discord
-          echo "dh=f6ff191e4a5bc5f7c6015cb294b104054eaf1d2f" > dist/.well-known/discord
+        run: ./trunk build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
