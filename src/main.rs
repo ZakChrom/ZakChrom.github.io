@@ -54,7 +54,10 @@ fn Text(children: Children, class: Option<&'static str>) -> impl IntoView {
 #[component]
 fn Main() -> impl IntoView {
     view! {
-        <a class="text-4xl">"Hello, world!"</a><br/>
+        <a class="text-4xl">"Hello, world!"</a><br/><br/>
+        <Link link="https://nohello.net/"/><br/>
+        <Link link="https://xyproblem.info/"/><br/>
+        <Link link="https://dontasktoask.com/"/><br/><br/>
         <Uiua code="Xy ← ⍘⍉⊞⊟. ÷÷2: -÷2,⇡.200
 Rgb ← [:⍘⊟×.Xy ↯△⊢Xy0.5]
 u ← ↥<0.2:>0.7.+×2 ×.:⍘⊟Xy
