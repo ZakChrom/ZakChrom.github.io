@@ -1,6 +1,13 @@
 use leptos::*;
 use leptos_router::*;
 use base64::engine::{general_purpose::URL_SAFE, Engine};
+use gloo_net::http::Request;
+use serde::{Deserialize, Serialize};
+
+#[derive(Deserialize, Serialize, Clone)]
+struct Config {
+    commit: String
+}
 
 #[component]
 fn Link(link: &'static str) -> impl IntoView {
@@ -80,11 +87,28 @@ fn About() -> impl IntoView {
 }
 
 fn main() {
-    mount_to_body(|| view! {
+    let config = create_resource(|| (), |_| async {
+        Request::get("/config.json")
+            .send()
+            .await
+            .unwrap()
+            .json::<Config>()
+            .await
+            .unwrap()
+    });
+
+    mount_to_body(move || view! {
         <Router>
-            <nav>
+            <nav class="flex flex-wrap">
                 <a class="text-2xl m-2" href="/">Home</a>
                 <a class="text-2xl m-2" href="/about">About</a>
+                <a class="text-2xl m-2" style="margin-left: auto;">
+                {move || if let Some(config) = config.get() {
+                    config.commit
+                } else {
+                    "Loading...".to_owned()
+                }}
+                </a>
             </nav>
             <hr style="border-color: var(--text-normal);"/>
             <main class="m-5">
