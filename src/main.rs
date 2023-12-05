@@ -79,7 +79,7 @@ const FLAG_EE: &str = "🇪🇪";
 fn About() -> impl IntoView {
     view! {
         <Text class=Some("text-xl")>Hello! I am Calion. Im from Estonia :flag_ee:</Text><br/>
-        <Text class=Some("text-xl")>My favourite programming languages are c, zig and rust.</Text><br/>
+        <Text class=Some("text-xl")>My favourite programming languages are c and rust.<br/>I also program alot in zig but i dont like how safe it is and its just annoying to use.</Text><br/><br/>
         <Text class=Some("text-xl")>"Youtube: " <Link link="https://youtube.com/@CalionYT"/></Text><br/>
         <Text class=Some("text-xl")>"Github: " <Link link="https://github.com/ZakChrom"/></Text><br/>
         <Text class=Some("text-xl")>"Discord: " <a style="color: var(--main-color);">"@calionreal"</a></Text>
