@@ -33,7 +33,7 @@ fn Emoji(name: &'static str) -> impl IntoView {
                 if let Some(index) = config.emojis.iter().position(|e| e.name == name) {
                     let emoji = &config.emojis[index];
                     return view! {
-                        <img class="inline-block" style="vertical-align: middle;height: 1.2em; width: auto;" src={emoji.url.clone()} />
+                        <img class="inline-block align-middle h-[1.2em] w-auto" src={emoji.url.clone()} />
                     }.into_any()
                 } else {
                     view! {<a>{name}</a>}.into_any()
@@ -64,7 +64,7 @@ fn Uiua(code: &'static str) -> impl IntoView {
 #[component]
 fn Main() -> impl IntoView {
     view! {
-        <a class="text-4xl">Hello, world! <Emoji name="calion"/></a><br/><br/>
+        <a class="text-4xl">Hello, world! <Emoji name="staring_cat"/></a><br/><br/>
         <Link link="https://nohello.net/"/><br/>
         <Link link="https://xyproblem.info/"/><br/>
         <Link link="https://dontasktoask.com/"/><br/><br/>
