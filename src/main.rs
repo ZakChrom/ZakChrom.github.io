@@ -44,15 +44,27 @@ fn Emoji(name: &'static str) -> impl IntoView {
     }
 }
 
-// #[component]
-// fn Project(link: &'static str, description: &'static str) -> impl IntoView {
-//     view! {
-//         <div style="border: 2px solid; border-color: var(--main-color)">
-//             <a class="text-xl">{description}</a>
-//             <Link link={link}/>
-//         </div>
-//     }
-// }
+#[component]
+fn Projects() -> impl IntoView {
+    // <div class="flex justify-center gap-10">
+    //     <div class="text-center" style="border: 1px solid var(--main-color); border-radius: 30px;background-color: var(--main-color); width: 500px; height: 100px;">
+    //         <a class="text-xl">Aslion</a><br/>
+    //         <a class="text-xl">Astro8 Emulator written in zig</a>
+    //     </div>
+    //     <div class="text-center" style="border: 1px solid var(--main-color); border-radius: 30px;background-color: var(--main-color); width: 500px; height: 100px;">
+
+    //     </div>
+    // </div>
+    view! {
+        <a class="text-xl" href="https://github.com/ZakChrom/Aslion">Aslion</a><br/>
+        <a class="text-xl">Astro8 Emulator written in zig.</a><br/><br/>
+
+        <hr style="width: 31ch;"/><br/>
+
+        <a class="text-xl" href="https://github.com/ZakChrom/ZakChrom.github.io">This website!</a><br/>
+        <a class="text-xl">Its written in rust using leptos.</a>
+    }
+}
 
 #[component]
 fn Uiua(code: &'static str) -> impl IntoView {
@@ -68,11 +80,11 @@ fn Main() -> impl IntoView {
         <Link link="https://nohello.net/"/><br/>
         <Link link="https://xyproblem.info/"/><br/>
         <Link link="https://dontasktoask.com/"/><br/><br/>
-        <Uiua code="Xy ← ⍘⍉⊞⊟. ÷÷2: -÷2,⇡.200
+        /*<Uiua code="Xy ← ⍘⍉⊞⊟. ÷÷2: -÷2,⇡.200
 Rgb ← [:⍘⊟×.Xy ↯△⊢Xy0.5]
 u ← ↥<0.2:>0.7.+×2 ×.:⍘⊟Xy
 c ← <:⍜⍘√/+ Xy
-⍉⊂:-¬u c1 +0.1 ≡↧¤c0.95Rgb" />
+⍉⊂:-¬u c1 +0.1 ≡↧¤c0.95Rgb" />*/
     }
 }
 
@@ -106,6 +118,7 @@ fn main() {
         <Router>
             <nav class="flex flex-wrap">
                 <a class="text-2xl m-2" href="/">Home</a>
+                <a class="text-2xl m-2" href="/projects">Projects</a>
                 <a class="text-2xl m-2" href="/about">About</a>
                 <a class="text-2xl m-2" style="margin-left: auto;">
                 {move || if let Some(config) = config.get() {
@@ -119,6 +132,7 @@ fn main() {
             <main class="m-5">
                 <Routes>
                     <Route path="/" view=Main/>
+                    <Route path="/projects" view=Projects/>
                     <Route path="/about" view=About/>
                     <Route path="/*any" view=|| view! {
                         <div class="flex h-screen items-center justify-center">
@@ -129,6 +143,5 @@ fn main() {
                 </Routes>
             </main>
         </Router>
-        //<Project link="https://github.com/ZakChrom/Aslion" description="Aslion is an Astro8 Emulator that was made for debugging altough i havent added that yet :staring_cat:"/>
     });
 }
