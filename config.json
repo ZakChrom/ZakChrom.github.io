@@ -1,3 +1,21 @@
 {
-    "commit": "dev"
+    "commit": "dev",
+    "emojis": [
+        {
+            "name": "calion",
+            "url": "/assets/calion.png"
+        },
+        {
+            "name": "zig",
+            "url": "/assets/zig.svg"
+        },
+        {
+            "name": "c",
+            "url": "/assets/c.svg"
+        },
+        {
+            "name": "rust",
+            "url": "/assets/rust.svg"
+        }
+    ]
 }

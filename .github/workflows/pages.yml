@@ -41,7 +41,14 @@ jobs:
       - name: Build the site
         run: |
           ./trunk build --release
-          echo "{\"commit\": \"`git log -n 1 --pretty=format:\"%h\"`\"}" > dist/config.json
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      
+      - name: Change config.json
+        run: python3 config.py
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
