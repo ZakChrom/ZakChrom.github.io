@@ -16,6 +16,10 @@
         {
             "name": "rust",
             "url": "/assets/rust.svg"
+        },
+        {
+            "name": "staring_cat",
+            "url": "/assets/staring_cat.png"
         }
     ]
 }
