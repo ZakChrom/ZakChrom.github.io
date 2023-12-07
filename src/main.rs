@@ -62,7 +62,12 @@ fn Projects() -> impl IntoView {
         <hr style="width: 31ch;"/><br/>
 
         <a class="text-xl" href="https://github.com/ZakChrom/ZakChrom.github.io">This website!</a><br/>
-        <a class="text-xl">Its written in rust using leptos.</a>
+        <a class="text-xl">Its written in rust using leptos.</a><br/><br/>
+
+        <hr style="width: 31ch;"/><br/>
+
+        <a class="text-xl" href="https://github.com/ZakChrom/A8CM">Cell Machine in Astro8</a><br/>
+        <a class="text-xl">Its Cell Machine on the Astro8</a>
     }
 }
 
