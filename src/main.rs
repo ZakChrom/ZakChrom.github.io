@@ -100,9 +100,17 @@ fn About() -> impl IntoView {
     view! {
         <a class=Some("text-xl")>Hello! I am Calion. Im from Estonia {ESTONIA_FLAG}</a><br/>
         <a class=Some("text-xl")>My favourite programming languages are <Emoji name="c"/>c and <Emoji name="rust"/>rust.<br/>I also program alot in <Emoji name="zig"/>zig but i dont like how safe it is and its just annoying to use.</a><br/><br/>
+    }
+}
+
+#[component]
+fn Contact() -> impl IntoView {
+    view! {
         <a class=Some("text-xl")>"Youtube: " <Link link="https://youtube.com/@CalionYT"/></a><br/>
         <a class=Some("text-xl")>"Github: " <Link link="https://github.com/ZakChrom"/></a><br/>
-        <a class=Some("text-xl")>"Discord: " <a style="color: var(--main-color);">"@calionreal"</a></a>
+        <a class=Some("text-xl")>"Discord: " <a style="color: var(--main-color);">"@calionreal"</a></a><br/>
+        <a class=Some("text-xl")>"Mastodon: soon™"</a><br/>
+        <a class=Some("text-xl")>"Email: soon™"</a>
     }
 }
 
@@ -125,6 +133,7 @@ fn main() {
                 <a class="text-2xl m-2" href="/">Home</a>
                 <a class="text-2xl m-2" href="/projects">Projects</a>
                 <a class="text-2xl m-2" href="/about">About</a>
+                <a class="text-2xl m-2" href="/contact">Contact</a>
                 <a class="text-2xl m-2" style="margin-left: auto;">
                 {move || if let Some(config) = config.get() {
                     config.commit
@@ -139,6 +148,7 @@ fn main() {
                     <Route path="/" view=Main/>
                     <Route path="/projects" view=Projects/>
                     <Route path="/about" view=About/>
+                    <Route path="/contact" view=Contact/>
                     <Route path="/*any" view=|| view! {
                         <div class="flex h-screen items-center justify-center">
                             <a class="text-9xl mr-4" style="color: var(--danger-color)">404</a>
