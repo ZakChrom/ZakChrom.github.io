@@ -106,9 +106,9 @@ fn About() -> impl IntoView {
 #[component]
 fn Contact() -> impl IntoView {
     view! {
-        <a class=Some("text-xl")>"Youtube: " <Link link="https://youtube.com/@CalionYT"/></a><br/>
-        <a class=Some("text-xl")>"Github: " <Link link="https://github.com/ZakChrom"/></a><br/>
-        <a class=Some("text-xl")>"Discord: " <a style="color: var(--main-color);">"@calionreal"</a></a><br/>
+        <a class=Some("text-xl")>"Youtube: " <a href="https://youtube.com/@CalionYT">"@CalionYT"</a></a><br/>
+        <a class=Some("text-xl")>"Github: " <a href="https://github.com/ZakChrom">"ZakChrom"</a></a><br/>
+        <a class=Some("text-xl")>"Discord: " <a href="https://discord.gg/ab3nwUZa">"@calionreal"</a></a><br/>
         <a class=Some("text-xl")>"Mastodon: soon™"</a><br/>
         <a class=Some("text-xl")>"Email: soon™"</a>
     }
