@@ -6,6 +6,83 @@
         <link data-trunk rel="copy-file" href="Uiua386.ttf">
         <link data-trunk rel="copy-file" href="config.json">
         <link data-trunk rel="copy-dir" href="assets/">
+        <link data-trunk rel="copy-file" href="matter.js">
+        <script src="matter.js"></script>
+        <script>
+            const load_svg = (url) => fetch(url)
+                .then(function(response) { return response.text(); })
+                .then(function(raw) { return (new window.DOMParser()).parseFromString(raw, "image/svg+xml"); });
+
+            setTimeout(() => {
+                const WIDTH = 800;
+                const HEIGHT = 800;
+
+                const Engine = Matter.Engine;
+                const Render = Matter.Render;
+                const Runner = Matter.Runner;
+                const Bodies = Matter.Bodies;
+                const Composite = Matter.Composite;
+                const MouseConstraint = Matter.MouseConstraint;
+                const Mouse = Matter.Mouse;
+                const Svg = Matter.Svg;
+                const Composites = Matter.Composites;
+
+                const engine = Engine.create();
+                const render = Render.create({
+                    element: document.getElementById("matter"),
+                    engine: engine,
+                    options: {
+                        width: WIDTH,
+                        height: HEIGHT,
+                        wireframes: false
+                    }
+                });
+                const runner = Runner.create();
+
+                const ground = Bodies.rectangle(WIDTH/2, HEIGHT, WIDTH*2, 50, { isStatic: true });
+                const calion = Bodies.circle(WIDTH/4*3, HEIGHT/2, 64, {
+                    render: {
+                        strokeStyle: "#ffffff",
+                        sprite: {
+                            xScale: 0.5,
+                            yScale: 0.5,
+                            texture: "/assets/calion.png"
+                        }
+                    }
+                });
+                const cat = Bodies.rectangle(WIDTH/4, HEIGHT/2, 128, 128, {
+                    render: {
+                        strokeStyle: "#ffffff",
+                        sprite: {
+                            xScale: 0.25,
+                            yScale: 0.25,
+                            texture: "/assets/staring_cat.png"
+                        }
+                    }
+                })
+
+                const mouse = Mouse.create(render.canvas);
+                const mouseConstraint = MouseConstraint.create(engine, {
+                    mouse: mouse,
+                    constraint: {
+                        stiffness: 0.2,
+                        render: {
+                            visible: false
+                        }
+                    }
+                });
+                
+                Composite.add(engine.world, [calion, cat, ground, mouseConstraint]);
+
+                render.mouse = mouse;
+                Render.lookAt(render, {
+                    min: { x: 0, y: 0 },
+                    max: { x: WIDTH, y: HEIGHT }
+                });
+                Render.run(render);
+                Runner.run(runner, engine);
+            }, 1000);
+        </script>
     </head>
     <body></body>
 </html>
