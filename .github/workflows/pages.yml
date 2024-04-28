@@ -41,6 +41,9 @@ jobs:
       - name: Build the site
         run: |
           ./trunk build --release
+          mkdir dist/.well-known
+          touch dist/.well-known
+          echo "dh=6e3501040ed25ae75e18735504c62bf158acefcd" > dist/.well-known/discord
       
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
