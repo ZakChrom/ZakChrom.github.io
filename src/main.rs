@@ -109,7 +109,7 @@ fn Contact() -> impl IntoView {
     view! {
         <a class=Some("text-xl")>"Youtube: " <a href="https://youtube.com/@CalionYT">"@CalionYT"</a></a><br/>
         <a class=Some("text-xl")>"Github: " <a href="https://github.com/ZakChrom">"ZakChrom"</a></a><br/>
-        <a class=Some("text-xl")>"Discord: " <a href="https://discord.gg/ab3nwUZa">"@calionreal"</a></a><br/>
+        <a class=Some("text-xl")>"Discord: @calionreal"</a></a><br/>
         <a class=Some("text-xl")>"Email: mail@calion.dev"</a>
     }
 }
