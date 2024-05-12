@@ -100,7 +100,7 @@ const ESTONIA_FLAG: &str = "🇪🇪";
 fn About() -> impl IntoView {
     view! {
         <a class=Some("text-xl")>Hello! I am Calion. Im from Estonia {ESTONIA_FLAG}</a><br/>
-        <a class=Some("text-xl")>My favourite programming languages are <Emoji name="c"/>c and <Emoji name="rust"/>rust.<br/>I also program alot in <Emoji name="zig"/>zig but i dont like how safe it is and its just annoying to use.</a><br/><br/>
+        <a class=Some("text-xl")>My favourite programming languages are <Emoji name="c"/>c and <Emoji name="rust"/>rust.<br/></a>
     }
 }
 
