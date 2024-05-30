@@ -82,9 +82,6 @@ fn Uiua(code: &'static str) -> impl IntoView {
 fn Main() -> impl IntoView {
     view! {
         <a class="text-4xl">Hello, world! <Emoji name="staring_cat"/></a><br/><br/>
-        <Link link="https://nohello.net/"/><br/>
-        <Link link="https://xyproblem.info/"/><br/>
-        <Link link="https://dontasktoask.com/"/><br/><br/>
         <div id="matter"></div>
         /*<Uiua code="Xy ← ⍘⍉⊞⊟. ÷÷2: -÷2,⇡.200
 Rgb ← [:⍘⊟×.Xy ↯△⊢Xy0.5]
