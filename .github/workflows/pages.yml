@@ -41,6 +41,8 @@ jobs:
       - name: Build the site
         run: |
           ./trunk build --release
+          mkdir dist/.well-known
+          echo "did:plc:zav5mlpvtiacbgkqloc5vvd3" > dist/.well-known/atproto-did
       
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
