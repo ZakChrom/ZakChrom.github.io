@@ -102,11 +102,13 @@ fn About() -> impl IntoView {
 }
 
 #[component]
-fn Contact() -> impl IntoView {
+fn Social() -> impl IntoView {
     view! {
         <a class=Some("text-xl")>"Youtube: " <a href="https://youtube.com/@CalionYT">"@CalionYT"</a></a><br/>
         <a class=Some("text-xl")>"Github: " <a href="https://github.com/ZakChrom">"ZakChrom"</a></a><br/>
         <a class=Some("text-xl")>"Discord: @calionreal"</a><br/>
+        <a class=Some("text-xl")>"Bluesky: @calion.dev"</a><br/>
+
         <a class=Some("text-xl")>"Email: mail@calion.dev"</a>
     }
 }
@@ -130,7 +132,7 @@ fn main() {
                 <a class="text-2xl m-2" href="/">Home</a>
                 <a class="text-2xl m-2" href="/projects">Projects</a>
                 <a class="text-2xl m-2" href="/about">About</a>
-                <a class="text-2xl m-2" href="/contact">Contact</a>
+                <a class="text-2xl m-2" href="/social">Social</a>
                 <a class="text-2xl m-2" style="margin-left: auto;">
                 {move || if let Some(config) = config.get() {
                     config.commit
@@ -145,7 +147,7 @@ fn main() {
                     <Route path="/" view=Main/>
                     <Route path="/projects" view=Projects/>
                     <Route path="/about" view=About/>
-                    <Route path="/contact" view=Contact/>
+                    <Route path="/social" view=Social/>
                     <Route path="/*any" view=|| view! {
                         <div class="flex h-screen items-center justify-center">
                             <a class="text-9xl mr-4" style="color: var(--danger-color)">404</a>
