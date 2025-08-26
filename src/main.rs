@@ -109,7 +109,7 @@ fn Social() -> impl IntoView {
         <a class=Some("text-xl")>"Discord: @calionreal"</a><br/>
         <a class=Some("text-xl")>"Bluesky: @calion.dev"</a><br/>
 
-        <a class=Some("text-xl")>"Email: mail@calion.dev"</a>
+        <a class=Some("text-xl")>"Email: mail@calion.dev (I dont have a way of responding from there rn. Use the discord one if you want a reply)"</a>
     }
 }
 
