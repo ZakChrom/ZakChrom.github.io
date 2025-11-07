@@ -43,6 +43,7 @@ jobs:
           ./trunk build --release
           mkdir dist/.well-known
           echo "did:plc:zav5mlpvtiacbgkqloc5vvd3" > dist/.well-known/atproto-did
+          mv dist/assets/meelislao.pptx dist/
       
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
